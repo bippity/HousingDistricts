@@ -512,6 +512,7 @@ namespace HousingDistricts
                             if (house == null) { ply.SendErrorMessage("No such house!"); return; }
 							string OwnerNames = "";
 							string VisitorNames = "";
+                            string GroupNames = "";
 							for (int i = 0; i < house.Owners.Count; i++)
 							{
 								var ID = house.Owners[i];
@@ -524,11 +525,18 @@ namespace HousingDistricts
 								try { VisitorNames += (String.IsNullOrEmpty(VisitorNames) ? "" : ", ") + TShock.Users.GetUserByID(System.Convert.ToInt32(ID)).Name; }
 								catch { }
 							}
+                            for (int i = 0; i < house.Groups.Count; i++)
+                            {
+                                var ID = house.Groups[i];
+                                try { GroupNames += (String.IsNullOrEmpty(GroupNames) ? "" : ", ") + TShock.Groups.GetGroupByName(ID.ToString()); }
+                                catch { }
+                            }
                             ply.SendMessage("House '" + house.Name + "':", Color.LawnGreen);
                             ply.SendMessage("Chat enabled: " + (house.ChatEnabled == 1 ? "yes" : "no"), Color.LawnGreen);
 							ply.SendMessage("Locked: " + (house.Locked == 1 ? "yes" : "no"), Color.LawnGreen);
                             ply.SendMessage("Owners: " + OwnerNames, Color.LawnGreen);
 							ply.SendMessage("Visitors: " + VisitorNames, Color.LawnGreen);
+                            ply.SendMessage("Groups: " + GroupNames, Color.LawnGreen);
                             ply.SendMessage("World Mismatch: " + HouseTools.WorldMismatch(house).ToString(), Color.LawnGreen);
                         }
 						else ply.SendErrorMessage("Invalid syntax! Proper syntax: /house info [house]");
