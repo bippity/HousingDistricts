@@ -42,10 +42,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="TerrariaServer">
-      <HintPath>..\..\Tshock refs\TerrariaServer.exe</HintPath>
+      <HintPath>bin\Debug\TerrariaServer.exe</HintPath>
     </Reference>
     <Reference Include="TShockAPI">
-      <HintPath>..\..\Tshock refs\TShockAPI.dll</HintPath>
+      <HintPath>bin\Debug\TShockAPI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
