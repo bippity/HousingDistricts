@@ -828,7 +828,7 @@ namespace HousingDistricts
 							ply.SendErrorMessage("Invalid syntax! Proper syntax: /house delgroup [name] [house]");
 						break;
 					}
-				case "tnotifs":
+				case "tnotify":
 					{
 						player.HouseNotifications = !player.HouseNotifications;
 						args.Player.SendSuccessMessage("House notifications are now {0}.", (player.HouseNotifications) ? "on" : "off");
@@ -840,7 +840,7 @@ namespace HousingDistricts
 						ply.SendMessage("/house set 1", Color.Lime);
 						ply.SendMessage("/house set 2", Color.Lime);
 						ply.SendMessage("/house add HouseName", Color.Lime);
-						ply.SendMessage("Other /house commands: list, allow, disallow, redefine, name, delete, clear, info, chat, addvisitor, delvisitor, addgroup, delgroup, lock, reload, tnotifs", Color.Lime);
+						ply.SendMessage("Other /house commands: list, allow, disallow, redefine, name, delete, clear, info, chat, addvisitor, delvisitor, addgroup, delgroup, lock, reload, tnotify", Color.Lime);
 						break;
 					}
 			}
