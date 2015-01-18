@@ -4,4 +4,5 @@ http://tshock.co/xf/index.php?threads/1-16-housingdistricts.2266/
 Extra Features:
 ================
 * Add groups as visitors for locked houses (/house addgroup)
-* Added command for players to toggle their notifications on/off (/house tnotify)
+* Players can toggle their notifications on/off (/house tnotify)
+* Players can teleport to their houses (/house tp)
