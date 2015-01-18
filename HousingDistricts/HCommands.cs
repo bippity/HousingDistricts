@@ -834,13 +834,40 @@ namespace HousingDistricts
 						args.Player.SendSuccessMessage("House notifications are now {0}.", (player.HouseNotifications) ? "on" : "off");
 						break;
 					}
+                case "tp":
+                    {
+                        if (!ply.Group.HasPermission(UseHouse))
+                        {
+                            ply.SendErrorMessage("You do not have permission to use this command!");
+                            return;
+                        }
+                        if ((!ply.IsLoggedIn || ply.UserID == 0) && ply.RealPlayer)
+                        {
+                            ply.SendErrorMessage("You must log-in to use House Protection.");
+                            return;
+                        }
+                        if (args.Parameters.Count > 1)
+                        {
+                            string housename = string.Join(" ", args.Parameters.Skip(1));
+                            var house = HouseTools.GetHouseByName(housename);
+                            if (house == null) { ply.SendErrorMessage("No such house!"); return; }
+
+                            if (HTools.OwnsHouse(ply.UserID.ToString(), house.Name) || ply.Group.HasPermission(AdminHouse))
+                            {
+                                ply.Teleport(house.HouseArea.Center.X * 16, house.HouseArea.Center.Y * 16);
+                            }
+                        }
+                        else
+                            ply.SendErrorMessage("Invalid syntax! Proper syntax: /house tp <house>");
+                        break;
+                    }
 				default:
 					{
 						ply.SendMessage("To create a house, use these commands:", Color.Lime);
 						ply.SendMessage("/house set 1", Color.Lime);
 						ply.SendMessage("/house set 2", Color.Lime);
 						ply.SendMessage("/house add HouseName", Color.Lime);
-						ply.SendMessage("Other /house commands: list, allow, disallow, redefine, name, delete, clear, info, chat, addvisitor, delvisitor, addgroup, delgroup, lock, reload, tnotify", Color.Lime);
+						ply.SendMessage("Other /house commands: list, allow, disallow, redefine, name, delete, clear, info, chat, addvisitor, delvisitor, addgroup, delgroup, lock, reload, tnotify, tp", Color.Lime);
 						break;
 					}
 			}
