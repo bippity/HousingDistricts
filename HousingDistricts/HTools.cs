@@ -27,8 +27,8 @@ namespace HousingDistricts
 				Console.ForegroundColor = ConsoleColor.Red;
 				Console.WriteLine("Error in config file");
 				Console.ForegroundColor = ConsoleColor.Gray;
-				Log.Error("Config Exception");
-				Log.Error(ex.ToString());
+				TShock.Log.Error("Config Exception");
+				TShock.Log.Error(ex.ToString());
 			}
 		}
 
@@ -104,7 +104,7 @@ namespace HousingDistricts
 				}
 				catch (Exception ex)
 				{
-					Log.Error(ex.ToString());
+					TShock.Log.Error(ex.ToString());
 					return false;
 				}
 			}

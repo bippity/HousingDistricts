@@ -56,7 +56,7 @@ namespace HousingDistricts
 			}
 			catch (Exception ex)
 			{
-				Log.Error(ex.ToString());
+				TShock.Log.Error(ex.ToString());
 			}
 
 			HousingDistricts.Houses.Add(new House(new Rectangle(tx, ty, width, height), new List<string>(), (HousingDistricts.Houses.Count + 1), housename, Main.worldID.ToString(), locked, chatenabled, new List<string>(), new List<string>()));
@@ -88,7 +88,7 @@ namespace HousingDistricts
 			}
 			catch (Exception ex)
 			{
-				Log.Error(ex.ToString());
+				TShock.Log.Error(ex.ToString());
 				return false;
 			}
 
@@ -120,7 +120,7 @@ namespace HousingDistricts
 			}
 			catch (Exception ex)
 			{
-				Log.Error(ex.ToString());
+				TShock.Log.Error(ex.ToString());
 				return false;
 			}
 
@@ -155,7 +155,7 @@ namespace HousingDistricts
 			}
 			catch (Exception ex)
 			{
-				Log.Error(ex.ToString());
+				TShock.Log.Error(ex.ToString());
 				return false;
 			}
 
@@ -185,7 +185,7 @@ namespace HousingDistricts
 			}
 			catch (Exception ex)
 			{
-				Log.Error(ex.ToString());
+				TShock.Log.Error(ex.ToString());
 				return false;
 			}
 
@@ -215,8 +215,8 @@ namespace HousingDistricts
 			}
 			catch (Exception ex)
 			{
-				Log.Error(ex.ToString());
-				Log.Error("Exception in AddNewGroup");
+				TShock.Log.Error(ex.ToString());
+				TShock.Log.Error("Exception in AddNewGroup");
 				return false;
 			}
 
@@ -246,7 +246,7 @@ namespace HousingDistricts
 			}
 			catch (Exception ex)
 			{
-				Log.Error(ex.ToString());
+				TShock.Log.Error(ex.ToString());
 				return false;
 			}
 
@@ -264,7 +264,7 @@ namespace HousingDistricts
 			}
 			catch (Exception ex)
 			{
-				Log.Error(ex.ToString());
+				TShock.Log.Error(ex.ToString());
 				return false;
 			}
 
@@ -289,7 +289,7 @@ namespace HousingDistricts
 			}
 			catch (Exception ex)
 			{
-				Log.Error(ex.ToString());
+				TShock.Log.Error(ex.ToString());
 				return false;
 			}
 
@@ -310,7 +310,7 @@ namespace HousingDistricts
 				}
 				catch (Exception ex)
 				{
-					Log.Error(ex.ToString());
+					TShock.Log.Error(ex.ToString());
 					return false;
 				}
 
@@ -320,7 +320,7 @@ namespace HousingDistricts
 			}
 			catch (Exception ex)
 			{
-				Log.Error("Error on redefining house: \n" + ex);
+				TShock.Log.Error("Error on redefining house: \n" + ex);
 				return false;
 			}
 		}

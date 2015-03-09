@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace HousingDistricts
 {
-	[ApiVersion(1, 16)]
+	[ApiVersion(1, 17)]
 	public class HousingDistricts : TerrariaPlugin
 	{
 		public static HConfigFile HConfig { get; set; }
@@ -277,14 +277,14 @@ namespace HousingDistricts
 								}
 								catch (Exception ex)
 								{
-									Log.Error(ex.ToString());
+									TShock.Log.Error(ex.ToString());
 									continue;
 								}
 							}
 						}
 						catch (Exception ex)
 						{
-							Log.Error(ex.ToString());
+							TShock.Log.Error(ex.ToString());
 							continue;
 						}
 
@@ -422,7 +422,7 @@ namespace HousingDistricts
 				}
 				catch (Exception ex)
 				{
-					Log.Error(ex.ToString());
+					TShock.Log.Error(ex.ToString());
 				}
 			}
 		}
@@ -433,7 +433,7 @@ namespace HousingDistricts
 			if (warn && ret) 
 			{ 
 				Console.WriteLine("Hook timeout detected in HousingDistricts. You might want to report this.");
-				Log.Error("Hook timeout detected in HousingDistricts. You might want to report this.");
+				TShock.Log.Error("Hook timeout detected in HousingDistricts. You might want to report this.");
 			}
 			return ret;
 		}

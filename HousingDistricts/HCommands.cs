@@ -300,7 +300,7 @@ namespace HousingDistricts
 								}
 								catch (Exception ex)
 								{
-									Log.Error(ex.ToString());
+									TShock.Log.Error(ex.ToString());
 								}
 								HousingDistricts.Houses.Remove(house);
 								ply.SendMessage("House: " + houseName + " deleted", Color.Yellow);
@@ -905,7 +905,7 @@ namespace HousingDistricts
 		{
 			HTools.SetupConfig();
 			var reader = TShock.DB.QueryReader("Select * from HousingDistrict");
-			Log.Info("House Config Reloaded");
+			TShock.Log.Info("House Config Reloaded");
 			args.Player.SendMessage("House Config Reloaded", Color.Lime);
 			HousingDistricts.Houses = new List<House>();
 			while (reader.Read())
@@ -930,7 +930,7 @@ namespace HousingDistricts
 				HousingDistricts.Houses.Add(new House(new Rectangle(reader.Get<int>("TopX"), reader.Get<int>("TopY"), reader.Get<int>("BottomX"), reader.Get<int>("BottomY")),
 					owners, id, reader.Get<string>("Name"), reader.Get<string>("WorldID"), locked, chatenabled, visitors, groups));
 			}
-			Log.Info("Houses Reloaded");
+			TShock.Log.Info("Houses Reloaded");
 			args.Player.SendMessage("Houses Reloaded", Color.Lime);
 		}
 
@@ -947,7 +947,7 @@ namespace HousingDistricts
 				}
 				catch (Exception ex)
 				{
-					Log.Error(ex.ToString());
+					TShock.Log.Error(ex.ToString());
 				}
 				args.Player.SendMessage("All houses deleted!", Color.Lime);
 			}
