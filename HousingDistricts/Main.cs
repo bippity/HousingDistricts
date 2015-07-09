@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace HousingDistricts
 {
-	[ApiVersion(1, 17)]
+	[ApiVersion(1, 18)]
 	public class HousingDistricts : TerrariaPlugin
 	{
 		public static HConfigFile HConfig { get; set; }
@@ -143,7 +143,7 @@ namespace HousingDistricts
 				new SqlColumn("Groups", MySqlDbType.Text)
 			);
 			var SQLWriter = new SqlTableCreator(TShock.DB, TShock.DB.GetSqlType() == SqlType.Sqlite ? (IQueryBuilder)new SqliteQueryCreator() : new MysqlQueryCreator());
-			SQLWriter.EnsureExists(table);
+			SQLWriter.EnsureTableStructure(table);
 			var reader = TShock.DB.QueryReader("Select * from HousingDistrict");
 			while( reader.Read() )
 			{

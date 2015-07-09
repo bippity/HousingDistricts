@@ -198,7 +198,7 @@ namespace HousingDistricts
 			byte type = args.Data.ReadInt8();
 			int x = args.Data.ReadInt16();
 			int y = args.Data.ReadInt16();
-			ushort tiletype = args.Data.ReadUInt16();
+            //short tiletype = args.Data.ReadInt16();
 
 			var player = HTools.GetPlayerByID(args.Player.Index);
 
@@ -249,7 +249,7 @@ namespace HousingDistricts
 						var house = HousingDistricts.Houses[i];
 						if (house != null && house.HouseArea.Intersects(new Rectangle(tilex, tiley, 1, 1)) && !HouseTools.WorldMismatch(house))
 						{
-							if (!HTools.OwnsHouse(args.Player.UserID.ToString(), house.Name))
+							if (!HTools.OwnsHouse(args.Player.UserID.ToString(), house.Name)) // Changing to User.ID will result in having to check for User != null
 							{
 								args.Player.SendTileSquare(tilex, tiley);
 								return true;
