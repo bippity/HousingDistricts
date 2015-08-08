@@ -43,6 +43,8 @@ namespace HousingDistricts
 				{PacketTypes.Teleport, HandleTeleport},
 				{PacketTypes.PaintTile, HandlePaintTile},
 				{PacketTypes.PaintWall, HandlePaintWall},
+                {PacketTypes.PlaceItemFrame, HandlePlaceItemFrame},
+                //{PacketTypes.PlaceTileEntity, HandlePlaceTileEntity},
 			};
 		}
 
@@ -364,5 +366,66 @@ namespace HousingDistricts
 			}
 			return false;
 		}
+
+        private static bool HandlePlaceItemFrame(GetDataHandlerArgs args)
+        {
+            var Start = DateTime.Now;
+
+            var X = args.Data.ReadInt16();
+            var Y = args.Data.ReadInt16();
+
+            if (!args.Player.Group.HasPermission(EditHouse))
+            {
+                lock (HousingDistricts.HPlayers)
+                {
+                    var I = HousingDistricts.Houses.Count;
+                    for (int i = 0; i < I; i++)
+                    {
+                        if (HousingDistricts.Timeout(Start)) return false;
+                        var house = HousingDistricts.Houses[i];
+                        if (house != null && house.HouseArea.Intersects(new Rectangle(X, Y, 1, 1)) && !HouseTools.WorldMismatch(house))
+                        {
+                            if (!HTools.OwnsHouse(args.Player.UserID.ToString(), house.Name))
+                            {
+                                args.Player.SendTileSquare(X, Y);
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        /*private static bool HandlePlaceTileEntity(GetDataHandlerArgs args)
+        {
+            TShock.Log.ConsoleInfo("test");
+            var Start = DateTime.Now;
+
+            var X = args.Data.ReadInt16();
+            var Y = args.Data.ReadInt16();
+
+            if (!args.Player.Group.HasPermission(EditHouse))
+            {
+                lock (HousingDistricts.HPlayers)
+                {
+                    var I = HousingDistricts.Houses.Count;
+                    for (int i = 0; i < I; i++)
+                    {
+                        if (HousingDistricts.Timeout(Start)) return false;
+                        var house = HousingDistricts.Houses[i];
+                        if (house != null && house.HouseArea.Intersects(new Rectangle(X, Y, 1, 1)) && !HouseTools.WorldMismatch(house))
+                        {
+                            if (!HTools.OwnsHouse(args.Player.UserID.ToString(), house.Name))
+                            {
+                                args.Player.SendData(PacketTypes.PlaceTileEntity, "", X, Y, Main.itemfra)
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }*/
 	}
 }
